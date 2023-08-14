@@ -24,6 +24,8 @@ namespace SapAreaRangeAddLoader
             SapConnector.ConnectToSap();
             Prefix_textBox.Text = "Live";
             AreaLoader.LoadManager.LoadTypeToCreate = eLoadPatternType.Live;
+            LoadType_comboBox.DataSource = Enum.GetValues(typeof(eLoadPatternType));
+            LoadType_comboBox.SelectedIndex = 2;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -39,6 +41,11 @@ namespace SapAreaRangeAddLoader
         private void CreateLoads_button_Click(object sender, EventArgs e)
         {
             AreaLoader.CreateLoadsAndCasesForSelectedAreas();
+        }
+
+        private void LoadType_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            AreaLoader.LoadManager.LoadTypeToCreate = (eLoadPatternType)(LoadType_comboBox.SelectedIndex + 1);
         }
     }
 }
