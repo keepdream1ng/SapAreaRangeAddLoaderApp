@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SapAreaRangeAddLoader", "SapAreaRangeAddLoader\SapAreaRangeAddLoader.csproj", "{8DB058D8-FE34-45FB-B0F1-0532765B30D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SapApiHelperLibrary", "..\SapApiHelperLibrary\SapApiHelperLibrary\SapApiHelperLibrary.csproj", "{2DFA1B2F-E970-44B3-B904-B0862DD714AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SapApiHelperLibrary", "SapApiHelperLibrary\SapApiHelperLibrary.csproj", "{328D58B9-DF39-44E1-A2EB-875E9D00C603}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8DB058D8-FE34-45FB-B0F1-0532765B30D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DB058D8-FE34-45FB-B0F1-0532765B30D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DB058D8-FE34-45FB-B0F1-0532765B30D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DFA1B2F-E970-44B3-B904-B0862DD714AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DFA1B2F-E970-44B3-B904-B0862DD714AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DFA1B2F-E970-44B3-B904-B0862DD714AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DFA1B2F-E970-44B3-B904-B0862DD714AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328D58B9-DF39-44E1-A2EB-875E9D00C603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328D58B9-DF39-44E1-A2EB-875E9D00C603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328D58B9-DF39-44E1-A2EB-875E9D00C603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328D58B9-DF39-44E1-A2EB-875E9D00C603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
