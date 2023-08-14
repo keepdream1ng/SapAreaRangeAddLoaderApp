@@ -26,6 +26,7 @@ namespace SapAreaRangeAddLoader
             AreaLoader.LoadManager.LoadTypeToCreate = eLoadPatternType.Live;
             LoadType_comboBox.DataSource = Enum.GetValues(typeof(eLoadPatternType));
             LoadType_comboBox.SelectedIndex = 2;
+            LoadValue_textBox.Text = "1,0";
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,6 +47,18 @@ namespace SapAreaRangeAddLoader
         private void LoadType_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             AreaLoader.LoadManager.LoadTypeToCreate = (eLoadPatternType)(LoadType_comboBox.SelectedIndex + 1);
+        }
+
+        private void LoadValue_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (double.TryParse(LoadValue_textBox.Text, out double value))
+            {
+                AreaLoader.LoadValue = value;
+            }
+            else
+            {
+                MessageBox.Show($"'{LoadValue_textBox.Text}' - is not valid load value");
+            }
         }
     }
 }
