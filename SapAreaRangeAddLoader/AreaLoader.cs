@@ -14,34 +14,34 @@ namespace SapAreaRangeAddLoader
         public static string LoadPrefix = string.Empty;
         public static double LoadValue = 1.0;
 
-        public static bool CreateLoadsAndCasesForSelectedAreas()
+        public static bool CreateAndApplyLoadsForSelectedAreas()
         {
             string[] areasNames = SelectionManager.GetSelectedObjectsNames(SapObjectType.Area);
-            string[] loadNames = areasNames.Select(areaName => $"{LoadPrefix}_{areaName}").ToArray();
-            List<int> creationResult = loadNames.Select(loadName => LoadManager.CreateNewLoadAndCaseByName(loadName))
-                .ToList();
+            // Program will not apply loads to objects if loads or combo names had problems with creation.
+            return (
+                CreateLoadsAndComboForAreas(areasNames, out string[] loadNames)
+                &&
+                ApplyLoadForAreaAndNamePairs(areasNames, loadNames)
+                );
+        }
+        private static bool CreateLoadsAndComboForAreas(string[] areasNames, out string[] loadNames)
+        {
             string comboName = $"{LoadPrefix}_range";
-            creationResult.Add(SapConnector.Model.RespCombo.Add(comboName, 4));
-            if (creationResult.Any(x => x != 0)
-                ||
-                (CreateLoadForAreaAndNamePairs(areasNames, loadNames))
-                )
-            {
+            loadNames = null;
+            if (SapConnector.Model.RespCombo.Add(comboName, 4) != 0)
                 return false;
-            }
+            loadNames = areasNames.Select(areaName => $"{LoadPrefix}_{areaName}").ToArray();
+            var creationResult = loadNames.Select(loadName => LoadManager.CreateNewLoadAndCaseByName(loadName));
             eCNameType type = eCNameType.LoadCase;
-            creationResult = loadNames.Select(loadName => SapConnector.Model.RespCombo.SetCaseList(comboName, ref type, loadName, 1.0))
-                .Where(x => x != 0)
-                .ToList();
-            return !creationResult.Any();
+            creationResult.Concat(loadNames.Select(loadName => SapConnector.Model.RespCombo.SetCaseList(comboName, ref type, loadName, 1.0)));
+            // Check if any of operations were unsuccsesfull.
+            return !creationResult.Any(x => x != 0);
         }
 
-        private static bool CreateLoadForAreaAndNamePairs(string[] areaNames, string[] loadNames)
+        private static bool ApplyLoadForAreaAndNamePairs(string[] areaNames, string[] loadNames)
         {
-            List<int> result = areaNames.Select((name, index) => SapConnector.Model.AreaObj.SetLoadUniformToFrame(name, loadNames[index], LoadValue, 11, 2))
-                .Where(x => x != 0)
-                .ToList();
-            return !result.Any();
+            var result = areaNames.Select((name, index) => SapConnector.Model.AreaObj.SetLoadUniformToFrame(name, loadNames[index], LoadValue, 11, 2));
+            return !result.Any(x => x != 0);
         }
     }
 }

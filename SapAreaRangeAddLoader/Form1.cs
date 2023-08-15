@@ -41,7 +41,10 @@ namespace SapAreaRangeAddLoader
 
         private void CreateLoads_button_Click(object sender, EventArgs e)
         {
-            AreaLoader.CreateLoadsAndCasesForSelectedAreas();
+            if (!AreaLoader.CreateAndApplyLoadsForSelectedAreas())
+            {
+                MessageBox.Show("Error, loads were not applied fully, check naming for collisions!");
+            }
         }
 
         private void LoadType_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
