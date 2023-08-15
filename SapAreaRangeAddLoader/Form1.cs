@@ -45,6 +45,10 @@ namespace SapAreaRangeAddLoader
             {
                 MessageBox.Show("Error, loads were not applied fully, check naming for collisions!");
             }
+            else
+            {
+                SapConnector.Model.SelectObj.ClearSelection();
+            }
         }
 
         private void LoadType_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
