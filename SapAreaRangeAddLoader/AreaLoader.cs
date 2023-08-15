@@ -31,9 +31,10 @@ namespace SapAreaRangeAddLoader
             if (SapConnector.Model.RespCombo.Add(comboName, 4) != 0)
                 return false;
             loadNames = areasNames.Select(areaName => $"{LoadPrefix}_{areaName}").ToArray();
-            var creationResult = loadNames.Select(loadName => LoadManager.CreateNewLoadAndCaseByName(loadName));
+            List<int> creationResult = loadNames.Select(loadName => LoadManager.CreateNewLoadAndCaseByName(loadName)).ToList();
             eCNameType type = eCNameType.LoadCase;
-            creationResult.Concat(loadNames.Select(loadName => SapConnector.Model.RespCombo.SetCaseList(comboName, ref type, loadName, 1.0)));
+            List<int> addToComboResult = loadNames.Select(loadName => SapConnector.Model.RespCombo.SetCaseList(comboName, ref type, loadName, 1.0)).ToList();
+            creationResult.Concat(addToComboResult);
             // Check if any of operations were unsuccsesfull.
             return !creationResult.Any(x => x != 0);
         }
