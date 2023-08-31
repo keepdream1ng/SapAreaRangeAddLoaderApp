@@ -7,7 +7,7 @@ using SAP2000v1;
 
 namespace SapApiHelperLibrary
 {
-    public class SapLoadsManager
+    public class SapLoadPatternsManager
     {
         public eLoadPatternType LoadTypeToCreate { get; set; }
 

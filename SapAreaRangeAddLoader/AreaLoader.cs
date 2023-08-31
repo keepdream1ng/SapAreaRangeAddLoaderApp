@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using SapApiHelperLibrary;
 using SAP2000v1;
+using SapApiHelperLibrary.Enums;
 
 namespace SapAreaRangeAddLoader
 {
     public static class AreaLoader
     {
-        public static SapLoadsManager LoadManager = new SapLoadsManager();
+        public static SapLoadPatternsManager LoadManager = new SapLoadPatternsManager();
+        public static SapAreaLoadType LoadType = 0;
         public static string LoadPrefix = string.Empty;
         public static double LoadValue = 1.0;
 
@@ -41,8 +43,14 @@ namespace SapAreaRangeAddLoader
 
         private static bool ApplyLoadForAreaAndNamePairs(string[] areaNames, string[] loadNames)
         {
-            var result = areaNames.Select((name, index) => SapConnector.Model.AreaObj.SetLoadUniformToFrame(name, loadNames[index], LoadValue, 11, 2));
-            return !result.Any(x => x != 0);
+            if (LoadType == SapAreaLoadType.Uniform)
+            {
+                return !areaNames.Select((name, index) => SapConnector.Model.AreaObj.SetLoadUniform(name, loadNames[index], LoadValue, 11))
+                    .Any(x => x != 0);
+            }
+
+            return !areaNames.Select((name, index) => SapConnector.Model.AreaObj.SetLoadUniformToFrame(name, loadNames[index], LoadValue, 11, (int)LoadType))
+                .Any(x => x != 0);
         }
     }
 }

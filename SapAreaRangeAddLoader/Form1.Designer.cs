@@ -35,6 +35,7 @@
             this.val_label = new System.Windows.Forms.Label();
             this.Pref_label = new System.Windows.Forms.Label();
             this.Type_label = new System.Windows.Forms.Label();
+            this.AreaLoadType_combobox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CreateLoads_button
@@ -100,11 +101,22 @@
             this.Type_label.TabIndex = 6;
             this.Type_label.Text = "Load type";
             // 
+            // AreaLoadType_combobox
+            // 
+            this.AreaLoadType_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AreaLoadType_combobox.FormattingEnabled = true;
+            this.AreaLoadType_combobox.Location = new System.Drawing.Point(165, 78);
+            this.AreaLoadType_combobox.Name = "AreaLoadType_combobox";
+            this.AreaLoadType_combobox.Size = new System.Drawing.Size(121, 21);
+            this.AreaLoadType_combobox.TabIndex = 7;
+            this.AreaLoadType_combobox.SelectionChangeCommitted += new System.EventHandler(this.AreaLoadType_combobox_SelectionChangeCommitted);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 111);
+            this.Controls.Add(this.AreaLoadType_combobox);
             this.Controls.Add(this.Type_label);
             this.Controls.Add(this.Pref_label);
             this.Controls.Add(this.val_label);
@@ -130,6 +142,7 @@
         private System.Windows.Forms.Label val_label;
         private System.Windows.Forms.Label Pref_label;
         private System.Windows.Forms.Label Type_label;
+        private System.Windows.Forms.ComboBox AreaLoadType_combobox;
     }
 }
 

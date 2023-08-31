@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SapApiHelperLibrary;
 using SAP2000v1;
+using SapApiHelperLibrary.Enums;
 
 namespace SapAreaRangeAddLoader
 {
@@ -26,6 +27,8 @@ namespace SapAreaRangeAddLoader
             AreaLoader.LoadManager.LoadTypeToCreate = eLoadPatternType.Live;
             LoadType_comboBox.DataSource = Enum.GetValues(typeof(eLoadPatternType));
             LoadType_comboBox.SelectedIndex = 2;
+            AreaLoadType_combobox.DataSource = Enum.GetValues(typeof(SapAreaLoadType));
+            AreaLoadType_combobox.SelectedIndex = 2;
             LoadValue_textBox.Text = "1,0";
         }
 
@@ -66,6 +69,11 @@ namespace SapAreaRangeAddLoader
             {
                 MessageBox.Show($"'{LoadValue_textBox.Text}' - is not valid load value");
             }
+        }
+
+        private void AreaLoadType_combobox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            AreaLoader.LoadType = (SapAreaLoadType)(AreaLoadType_combobox.SelectedIndex);
         }
     }
 }

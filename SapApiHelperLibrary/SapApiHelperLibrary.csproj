@@ -45,10 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\SapAreaLoadType.cs" />
     <Compile Include="Enums\SapObjectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SapConnector.cs" />
-    <Compile Include="SapLoadsManager.cs" />
+    <Compile Include="SapLoadPatternsManager.cs" />
     <Compile Include="SapVewManager.cs" />
     <Compile Include="SelectionManager.cs" />
   </ItemGroup>
