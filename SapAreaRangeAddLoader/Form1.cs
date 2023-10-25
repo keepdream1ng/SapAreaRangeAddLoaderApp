@@ -28,7 +28,7 @@ namespace SapAreaRangeAddLoader
             LoadType_comboBox.DataSource = Enum.GetValues(typeof(eLoadPatternType));
             LoadType_comboBox.SelectedIndex = 2;
             AreaLoadType_combobox.DataSource = Enum.GetValues(typeof(SapAreaLoadType));
-            AreaLoadType_combobox.SelectedIndex = 2;
+            AreaLoadType_combobox.SelectedIndex = 0;
             LoadValue_textBox.Text = "1,0";
         }
 
